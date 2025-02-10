@@ -1,6 +1,8 @@
-const Filter = (props) => {
+const Filter = ({ searchName, setSearchName, handleChange }) => {
     return (
-      <div>filter shown with <input value={props.filter} onChange={props.handleFilterChange}/></div>
+      <div>
+        Filter shown with: <input value={searchName} onChange={handleChange(setSearchName)} />
+      </div>
     )
 }
 

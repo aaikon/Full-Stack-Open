@@ -1,9 +1,23 @@
-const Persons = ({ persons, removePerson }) => {
+import Person from './Person'
+
+const Persons = ({ persons, searchName, setPersons }) => {
     return (
         <div>
-        {persons.map(person => 
-            <p key={person.name}>{person.name} {person.number} <button onClick={() => removePerson(person.id)}>delete</button></p>
-        )}
+            <table>
+                <tbody>
+                    {
+                        persons.map(person => {
+                            if (searchName.length === 0 || person.name.search(searchName) !== -1) {
+                                return (
+                                    <Person key={person.id} person={person} setPersons={setPersons} />
+                                )
+                            } else {
+                                return null
+                            }
+                        })
+                    }
+                </tbody>
+            </table>
         </div>  
     )
 }
